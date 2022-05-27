@@ -159,6 +159,45 @@ Storing signatures
 Writing manifest list to image destination
 Storing list signatures
 
+
+$ skopeo copy --authfile=/home/bschmaus/quay-merged-pull-secret --all docker://registry.access.redhat.com/ubi8/ubi dir:./ubi
+Getting image list signatures
+Copying 4 of 4 images in list
+Copying image sha256:88b67c5c3d7bc900e0dc77c058601c618758e3c79d468ebfe446e91c45657b46 (1/4)
+Getting image source signatures
+Checking if image destination supports signatures
+Copying blob f70d60810c69 done  
+Copying blob 545277d80005 done  
+Copying config 1264065f6a done  
+Writing manifest to image destination
+Storing signatures
+Copying image sha256:d76aca6a7d77690e4c05a6129de6fe1e788f5c59950eaffdbb86108adaaae95b (2/4)
+Getting image source signatures
+Checking if image destination supports signatures
+Copying blob 0f6e46285dbe done  
+Copying blob b88304ccd20b done  
+Copying config 33e584026d done  
+Writing manifest to image destination
+Storing signatures
+Copying image sha256:683cace406dbb9b311152a838406170b1f089e7bd64c973afafc1e6f273926d8 (3/4)
+Getting image source signatures
+Checking if image destination supports signatures
+Copying blob 3535894aee57 done  
+Copying blob 0a1c03975291 done  
+Copying config 321596c103 done  
+Writing manifest to image destination
+Storing signatures
+Copying image sha256:81461825a6cd8d7833c39e509d051927b2eef1ce98817c2cee045306398bf319 (4/4)
+Getting image source signatures
+Checking if image destination supports signatures
+Copying blob e8d8cab5ec85 done  
+Copying blob fa7d3d3fed5d done  
+Copying config d2d494a576 done  
+Writing manifest to image destination
+Storing signatures
+Writing manifest list to image destination
+Storing list signatures
+
 ~~~
 
 ~~~bash
