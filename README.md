@@ -333,5 +333,121 @@ Storing signatures
 ~~~
 
 ~~~bash
+$ buildah from scratch
+working-container
+
+$ buildah unshare 
+#  buildah mount working-container
+/home/bschmaus/.local/share/containers/storage/overlay/90d119e66a29c4d8bb51df857daf9d257d07a2d066f5234af71750d6a02ffc1e/merged
+
+$ buildah unshare 
+# scratchmnt=$(buildah mount working-container)
+
+# echo ${scratchmnt}
+/home/bschmaus/.local/share/containers/storage/overlay/90d119e66a29c4d8bb51df857daf9d257d07a2d066f5234af71750d6a02ffc1e/merged
+
+# ls -l ${scratchmnt}
+total 0
+
+# yum install --installroot ${scratchmnt} httpd --releasever 8 --setopt=module_platform_id="platform:el8" -y
+
+Red Hat OpenStack Platform 16 Tools for RHEL 8 x86_64 (RPMs)                                                                                                                       660 kB/s | 553 kB     00:00    
+Dependencies resolved.
+===================================================================================================================================================================================================================
+ Package                                            Architecture                  Version                                                            Repository                                               Size
+===================================================================================================================================================================================================================
+Installing:
+ httpd                                              x86_64                        2.4.37-47.module+el8.6.0+14529+083145da.1                          rhel-8-for-x86_64-appstream-rpms                        1.4 M
+Installing dependencies:
+ acl                                                x86_64                        2.2.53-1.el8                                                       rhel-8-for-x86_64-baseos-rpms                            81 k
+ apr                                                x86_64                        1.6.3-12.el8                                                       rhel-8-for-x86_64-appstream-rpms                        130 k
+ apr-util                                           x86_64                        1.6.1-6.el8                                                        rhel-8-for-x86_64-appstream-rpms                        105 k
+ audit-libs                                         x86_64                        3.0.7-2.el8.2                                                      rhel-8-for-x86_64-baseos-rpms                           123 k
+ basesystem                                         noarch                        11-5.el8                                                           rhel-8-for-x86_64-baseos-rpms                            11 k
+(...)
+Installed products updated.
+
+Installed:
+  acl-2.2.53-1.el8.x86_64                                                    apr-1.6.3-12.el8.x86_64                                               apr-util-1.6.1-6.el8.x86_64                                    
+  apr-util-bdb-1.6.1-6.el8.x86_64                                            apr-util-openssl-1.6.1-6.el8.x86_64                                   audit-libs-3.0.7-2.el8.2.x86_64                                
+  basesystem-11-5.el8.noarch                                                 bash-4.4.20-3.el8.x86_64                                              brotli-1.0.6-3.el8.x86_64                                      
+  bzip2-libs-1.0.6-26.el8.x86_64                                             ca-certificates-2021.2.50-80.0.el8_4.noarch                           chkconfig-1.19.1-1.el8.x86_64                                  
+  coreutils-8.30-12.el8.x86_64                                               coreutils-common-8.30-12.el8.x86_64                                   cpio-2.12-11.el8.x86_64                                        
+  cracklib-2.9.6-15.el8.x86_64                                               cracklib-dicts-2.9.6-15.el8.x86_64                                    crypto-policies-20211116-1.gitae470d6.el8.noarch               
+  crypto-policies-scripts-20211116-1.gitae470d6.el8.noarch                   cryptsetup-libs-2.3.7-2.el8.x86_64                                    curl-7.61.1-22.el8.x86_64                                      
+  cyrus-sasl-lib-2.1.27-6.el8_5.x86_64                                       dbus-1:1.12.8-18.el8.x86_64                                           dbus-common-1:1.12.8-18.el8.noarch                             
+  dbus-daemon-1:1.12.8-18.el8.x86_64                                         dbus-libs-1:1.12.8-18.el8.x86_64                                      dbus-tools-1:1.12.8-18.el8.x86_64                              
+  device-mapper-8:1.02.181-3.el8.x86_64                                      device-mapper-libs-8:1.02.181-3.el8.x86_64                            diffutils-3.6-6.el8.x86_64                                     
+  dracut-049-201.git20220131.el8.x86_64                                      elfutils-debuginfod-client-0.186-1.el8.x86_64                         elfutils-default-yama-scope-0.186-1.el8.noarch                 
+  elfutils-libelf-0.186-1.el8.x86_64                                         elfutils-libs-0.186-1.el8.x86_64                                      expat-2.2.5-8.el8.x86_64                                       
+  file-5.33-20.el8.x86_64                                                    file-libs-5.33-20.el8.x86_64                                          filesystem-3.8-6.el8.x86_64                                    
+  findutils-1:4.6.0-20.el8.x86_64                                            gawk-4.2.1-4.el8.x86_64                                               gdbm-1:1.18-1.el8.x86_64                                       
+  gdbm-libs-1:1.18-1.el8.x86_64                                              gettext-0.19.8.1-17.el8.x86_64                                        gettext-libs-0.19.8.1-17.el8.x86_64                            
+  glib2-2.56.4-158.el8.x86_64                                                glibc-2.28-189.1.el8.x86_64                                           glibc-all-langpacks-2.28-189.1.el8.x86_64                      
+  glibc-common-2.28-189.1.el8.x86_64                                         glibc-gconv-extra-2.28-189.1.el8.x86_64                               gmp-1:6.1.2-10.el8.x86_64                                      
+  gnutls-3.6.16-4.el8.x86_64                                                 grep-3.1-6.el8.x86_64                                                 grub2-common-1:2.02-123.el8.noarch                             
+  grub2-tools-1:2.02-123.el8.x86_64                                          grub2-tools-minimal-1:2.02-123.el8.x86_64                             grubby-8.40-42.el8.x86_64                                      
+  gzip-1.9-13.el8_5.x86_64                                                   hardlink-1:1.3-6.el8.x86_64                                           httpd-2.4.37-47.module+el8.6.0+14529+083145da.1.x86_64         
+  httpd-filesystem-2.4.37-47.module+el8.6.0+14529+083145da.1.noarch          httpd-tools-2.4.37-47.module+el8.6.0+14529+083145da.1.x86_64          info-6.5-7.el8.x86_64                                          
+  json-c-0.13.1-3.el8.x86_64                                                 kbd-2.0.4-10.el8.x86_64                                               kbd-legacy-2.0.4-10.el8.noarch                                 
+  kbd-misc-2.0.4-10.el8.noarch                                               keyutils-libs-1.5.10-9.el8.x86_64                                     kmod-25-19.el8.x86_64                                          
+  kmod-libs-25-19.el8.x86_64                                                 kpartx-0.8.4-22.el8.x86_64                                            krb5-libs-1.18.2-14.el8.x86_64                                 
+  libacl-2.2.53-1.el8.x86_64                                                 libarchive-3.3.3-3.el8_5.x86_64                                       libattr-2.4.48-3.el8.x86_64                                    
+  libblkid-2.32.1-35.el8.x86_64                                              libcap-2.48-2.el8.x86_64                                              libcap-ng-0.7.11-1.el8.x86_64                                  
+  libcom_err-1.45.6-4.el8.x86_64                                             libcroco-0.6.12-4.el8_2.1.x86_64                                      libcurl-7.61.1-22.el8.x86_64                                   
+  libdb-5.3.28-42.el8_4.x86_64                                               libdb-utils-5.3.28-42.el8_4.x86_64                                    libfdisk-2.32.1-35.el8.x86_64                                  
+  libffi-3.1-23.el8.x86_64                                                   libgcc-8.5.0-10.el8.x86_64                                            libgcrypt-1.8.5-6.el8.x86_64                                   
+  libgomp-8.5.0-10.el8.x86_64                                                libgpg-error-1.31-1.el8.x86_64                                        libidn2-2.2.0-1.el8.x86_64                                     
+  libkcapi-1.2.0-2.el8.x86_64                                                libkcapi-hmaccalc-1.2.0-2.el8.x86_64                                  libmount-2.32.1-35.el8.x86_64                                  
+  libnghttp2-1.33.0-3.el8_2.1.x86_64                                         libnsl2-1.2.0-2.20180605git4a062cf.el8.x86_64                         libpsl-0.20.2-6.el8.x86_64                                     
+  libpwquality-1.4.4-3.el8.x86_64                                            libseccomp-2.5.2-1.el8.x86_64                                         libselinux-2.9-5.el8.x86_64                                    
+  libsemanage-2.9-8.el8.x86_64                                               libsepol-2.9-3.el8.x86_64                                             libsigsegv-2.11-5.el8.x86_64                                   
+  libsmartcols-2.32.1-35.el8.x86_64                                          libssh-0.9.6-3.el8.x86_64                                             libssh-config-0.9.6-3.el8.noarch                               
+  libstdc++-8.5.0-10.el8.x86_64                                              libtasn1-4.13-3.el8.x86_64                                            libtirpc-1.1.4-6.el8.x86_64                                    
+  libunistring-0.9.9-3.el8.x86_64                                            libutempter-1.1.6-14.el8.x86_64                                       libuuid-2.32.1-35.el8.x86_64                                   
+  libverto-0.3.0-5.el8.x86_64                                                libxcrypt-4.1.1-6.el8.x86_64                                          libxkbcommon-0.9.1-1.el8.x86_64                                
+  libxml2-2.9.7-13.el8.x86_64                                                libzstd-1.4.4-1.el8.x86_64                                            lua-libs-5.3.4-12.el8.x86_64                                   
+  lz4-libs-1.8.3-3.el8_4.x86_64                                              mailcap-2.1.48-3.el8.noarch                                           memstrack-0.1.11-1.el8.x86_64                                  
+  mod_http2-1.15.7-5.module+el8.6.0+13996+01710940.x86_64                    mpfr-3.1.6-1.el8.x86_64                                               ncurses-6.1-9.20180224.el8.x86_64                              
+  ncurses-base-6.1-9.20180224.el8.noarch                                     ncurses-libs-6.1-9.20180224.el8.x86_64                                nettle-3.4.1-7.el8.x86_64                                      
+  openldap-2.4.46-18.el8.x86_64                                              openssl-1:1.1.1k-6.el8_5.x86_64                                       openssl-libs-1:1.1.1k-6.el8_5.x86_64                           
+  openssl-pkcs11-0.4.10-2.el8.x86_64                                         os-prober-1.74-9.el8.x86_64                                           p11-kit-0.23.22-1.el8.x86_64                                   
+  p11-kit-trust-0.23.22-1.el8.x86_64                                         pam-1.3.1-16.el8.x86_64                                               pcre-8.42-6.el8.x86_64                                         
+  pcre2-10.32-2.el8.x86_64                                                   pigz-2.4-4.el8.x86_64                                                 platform-python-3.6.8-45.el8.x86_64                            
+  platform-python-pip-9.0.3-22.el8.noarch                                    platform-python-setuptools-39.2.0-6.el8.noarch                        popt-1.18-1.el8.x86_64                                         
+  procps-ng-3.3.15-6.el8.x86_64                                              publicsuffix-list-dafsa-20180723-1.el8.noarch                         python3-libs-3.6.8-45.el8.x86_64                               
+  python3-pip-wheel-9.0.3-22.el8.noarch                                      python3-setuptools-wheel-39.2.0-6.el8.noarch                          readline-7.0-10.el8.x86_64                                     
+  redhat-logos-httpd-84.5-1.el8.noarch                                       redhat-release-8.6-0.1.el8.x86_64                                     redhat-release-eula-8.6-0.1.el8.x86_64                         
+  rpm-4.14.3-23.el8.x86_64                                                   rpm-libs-4.14.3-23.el8.x86_64                                         sed-4.5-5.el8.x86_64                                           
+  setup-2.12.2-6.el8.noarch                                                  shadow-utils-2:4.6-16.el8.x86_64                                      shared-mime-info-1.9-3.el8.x86_64                              
+  sqlite-libs-3.26.0-15.el8.x86_64                                           systemd-239-58.el8.x86_64                                             systemd-libs-239-58.el8.x86_64                                 
+  systemd-pam-239-58.el8.x86_64                                              systemd-udev-239-58.el8.x86_64                                        trousers-0.3.15-1.el8.x86_64                                   
+  trousers-lib-0.3.15-1.el8.x86_64                                           tzdata-2022a-1.el8.noarch                                             util-linux-2.32.1-35.el8.x86_64                                
+  which-2.21-17.el8.x86_64                                                   xkeyboard-config-2.28-1.el8.noarch                                    xz-5.2.4-3.el8.x86_64                                          
+  xz-libs-5.2.4-3.el8.x86_64                                                 zlib-1.2.11-18.el8_5.x86_64                                          
+
+Complete!
+
+# chroot ${scratchmnt} systemctl enable httpd 
+Created symlink /etc/systemd/system/multi-user.target.wants/httpd.service → /usr/lib/systemd/system/httpd.service.
+[root@provisioning ~]# cp index1.html ${scratchmnt}/var/www/html/index.html
+
+# buildah commit working-container el-httpd2
+Getting image source signatures
+Copying blob 99e4008bb08a done  
+Copying config a663c1b726 done  
+Writing manifest to image destination
+Storing signatures
+a663c1b726832880bc80437f655c831c6d2e03ac42baf3df033d0f13603fd490
+
+# podman images
+REPOSITORY                                                                 TAG         IMAGE ID      CREATED         SIZE
+localhost/el-httpd2                                                        latest      a663c1b72683  13 seconds ago  746 MB
+localhost/el-httpd1                                                        latest      deb602c89480  2 hours ago     452 MB
+poc-registry-quay-quay-poc.apps.kni20.schmaustech.com/openshift/el-httpd1  latest      deb602c89480  2 hours ago     452 MB
+registry.access.redhat.com/ubi8/ubi-init                                   latest      0d9e0c1523d9  3 weeks ago     240 MB
+registry.access.redhat.com/ubi8/ubi                                        latest      1264065f6ae8  3 weeks ago     225 MB
+poc-registry-quay-quay-poc.apps.kni20.schmaustech.com/ubi8/ubi             latest      1264065f6ae8  3 weeks ago     225 MB
+poc-registry-quay-quay-poc.apps.kni20.schmaustech.com/openshift/ubi        latest      1264065f6ae8  3 weeks ago     225 MB
 
 ~~~
