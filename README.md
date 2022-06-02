@@ -440,7 +440,9 @@ Writing manifest to image destination
 Storing signatures
 a663c1b726832880bc80437f655c831c6d2e03ac42baf3df033d0f13603fd490
 
-# podman images
+# exit
+
+$ podman images
 REPOSITORY                                                                 TAG         IMAGE ID      CREATED         SIZE
 localhost/el-httpd2                                                        latest      a663c1b72683  13 seconds ago  746 MB
 localhost/el-httpd1                                                        latest      deb602c89480  2 hours ago     452 MB
@@ -449,5 +451,9 @@ registry.access.redhat.com/ubi8/ubi-init                                   lates
 registry.access.redhat.com/ubi8/ubi                                        latest      1264065f6ae8  3 weeks ago     225 MB
 poc-registry-quay-quay-poc.apps.kni20.schmaustech.com/ubi8/ubi             latest      1264065f6ae8  3 weeks ago     225 MB
 poc-registry-quay-quay-poc.apps.kni20.schmaustech.com/openshift/ubi        latest      1264065f6ae8  3 weeks ago     225 MB
+
+podman tag localhost/el-httpd2 poc-registry-quay-quay-poc.apps.kni20.schmaustech.com/openshift/el-httpd2
+
+podman push poc-registry-quay-quay-poc.apps.kni20.schmaustech.com/openshift/el-httpd2 --tls-verify=false --authfile=/home/bschmaus/quay-merged-pull-secret.json
 
 ~~~
