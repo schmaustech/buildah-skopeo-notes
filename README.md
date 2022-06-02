@@ -130,7 +130,7 @@ $ skopeo inspect docker://registry.access.redhat.com/ubi8/ubi
     ]
 }
 
-$ skopeo copy --authfile=/home/bschmaus/quay-merged-pull-secret.json --all docker://registry.access.redhat.com/ubi8/ubi docker://poc-registry-quay-quay-poc.apps.kni20.schmaustech.com/openshift/ubi --dest-tls-verify=false --remove-signatures --dest-username=openshift --dest-password=PMDYUD2ITCYNUEN6M9DVCSR50BOXEF69
+$ skopeo copy --authfile=/home/bschmaus/quay-merged-pull-secret.json --all docker://registry.access.redhat.com/ubi8/ubi docker://poc-registry-quay-quay-poc.apps.kni20.schmaustech.com/openshift/ubi --dest-tls-verify=false
 Copying 4 of 4 images in list
 Copying image sha256:88b67c5c3d7bc900e0dc77c058601c618758e3c79d468ebfe446e91c45657b46 (1/4)
 Copying blob f70d60810c69 skipped: already exists  
